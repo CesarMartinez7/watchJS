@@ -31,7 +31,6 @@ document.querySelector("#app").innerHTML = `
 <div>
 <p id="hora" class="hora" data-color:"#0F172A">${ObtenerHora()}</p>
 <p id="fecha" class="fecha">${ObtenerDate()}</p>
-<p id="red">Loremosdlsdsldkñsldkñls dkskñldksl dksldkñl skñl ksldsldksl dkñl</p>
 </p>
 <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript" target="_blank">
 <img src="${javascriptLogo}" class="logo vanilla" alt="JavaScript logo" />
@@ -39,4 +38,17 @@ document.querySelector("#app").innerHTML = `
 </div>
 `;
 
+
+const horaElement = document.getElementById("hora")
+
+console.log(horaElement)
+
+horaElement.addEventListener("mouseenter",(e)=>{
+  e.target.style.filter = `drop-shadow(${"#ffff"} 3px 2px 40px)`
+  e.target.transition = "1s all "
+})
+
+horaElement.addEventListener("mouseleave",(e)=>{
+  e.target.style.filter = ``
+})
 

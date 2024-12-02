@@ -94,4 +94,9 @@ button:focus-visible {
   font-size: 10rem;
   font-weight: lighter;
   margin: 0;
+  
+}
+
+.hora:hover{
+  transition: filter 500ms;
 }
