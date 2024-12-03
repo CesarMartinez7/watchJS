@@ -30,24 +30,28 @@ document.querySelector("#app").innerHTML = `
 <a href="https://github.com/CesarMartinez7" target="_ublank">
 <img class="git" src=${githublogo}>
 </a>
-<h1>DateTime</h1>
+<h1 data-aos="fade-up">DateTime</h1>
+
+
+
+
 <p id="hora" class="hora" data-color:"#0F172A">${ObtenerHora()}</p>
 <p id="fecha" class="fecha">${ObtenerDate()}</p>
 </p>
 </a>
 </div>
-<main class="cronometro">
+<main class="cronometro" data-aos="fade-up">
   <p class="hora">
-      <span id="minutos"></span>:<span id="segundos"></span>
+      <span id="horas"></span>:<span id="minutos"></span>:<span id="segundos"></span>
   </p>
   <button id="start">Start</button>
   <button id="stop">Stop</button>
 </main>
 `;
+const horaElement = document.getElementById("horas");
 
-const horaElement = document.getElementById("hora");
 
-console.log(horaElement);
+
 
 horaElement.addEventListener("mouseenter", (e) => {
   e.target.style.filter = `drop-shadow(${"#ffff"} 3px 2px 40px)`;
@@ -58,16 +62,19 @@ horaElement.addEventListener("mouseleave", (e) => {
   e.target.style.filter = ``;
 });
 
+/////////////////////////////////////////
+const HorasElement = document.getElementById("horas")
 const MinutosElement = document.getElementById("minutos");
 const SegundosElement = document.getElementById("segundos");
 const ButtonStart = document.getElementById("start");
 
 let Segundos = 0;
 let Minutos = 0;
+let Horas = 0
 
 MinutosElement.textContent = Minutos;
 SegundosElement.textContent = Segundos;
-
+HorasElement.textContent = Horas
 ButtonStart.addEventListener("click", () => {
   Segundos += 1;
   setInterval(() => {
@@ -76,6 +83,12 @@ ButtonStart.addEventListener("click", () => {
       Minutos = Minutos + 1;
       MinutosElement.textContent = Minutos;
       Segundos = 0;
+      if(Minutos === 1){
+        Horas += 1
+        Minutos = 0
+        HorasElement.textContent = Horas
+      }
     }
+    
   }, 1000);
 });
