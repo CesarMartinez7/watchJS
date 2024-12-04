@@ -70,31 +70,32 @@ const ButtonStop = document.getElementById("stop");
 let Segundos = 0;
 let Minutos = 0;
 let Horas = 0;
-let pausado = false;
+let pausado = false
 
 MinutosElement.textContent = Minutos;
 SegundosElement.textContent = Segundos;
 HorasElement.textContent = Horas;
 
-const Ejecucion = () => {
-  if (!pausado) {
-    Segundos += 1;
-    
-      SegundosElement.textContent = Segundos++;
-      if (Segundos === 59) {
-        Minutos = Minutos + 1;
-        MinutosElement.textContent = Minutos;
-        Segundos = 0;
-        if (Minutos === 59) {
-          Horas = Horas + 1;
-          HorasElement.textContent = Horas;
-          Minutos = 0;
-        }
-      }
-  }
-};
+
+
 
 ButtonStart.addEventListener("click", () => {
-  setInterval(Ejecucion,1000)
+  Segundos += 1;
+  setInterval(() => {
+    SegundosElement.textContent = Segundos++;
+    if (Segundos === 59) {
+      Minutos = Minutos + 1;
+      MinutosElement.textContent = Minutos;
+      Segundos = 0;
+      if (Minutos === 59) {
+        Horas = Horas + 1;
+        HorasElement.textContent = Horas;
+        Minutos = 0;
+      }
+    }
+  }, 1000);
 });
 
+ButtonStop.addEventListener("click", () => {
+
+});
