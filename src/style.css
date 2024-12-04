@@ -4,7 +4,6 @@
   font-weight: 400;
   color-scheme: light dark;
   color: rgba(255, 255, 255, 0.87);
-  background-color: #0f0f0fef;
   font-synthesis: none;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
@@ -66,13 +65,15 @@ h1 {
 
 @media (prefers-color-scheme: light) {
   :root {
-    color: #213547;
+    color: #198ff7;
     background-color: #ffffff;
   }
   a:hover {
     color: #747bff;
   }
 }
+
+
 
 
 .git{
@@ -92,10 +93,17 @@ h1 {
 }
 
 button{
-  padding: 0.60rem; 
+  padding: 0.70rem 1.25rem; 
   border-radius: 0.24rem;
+  background: #141414;
+  border: 1px solid #2f2f2f;
 }
 
+button:hover{
+  cursor: pointer;
+  box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+  transition: box-shadow 500ms;
+}
 .fecha{
   font-size: 1.40rem;
   font-weight: lighter;
@@ -114,4 +122,10 @@ button{
 
 .hora:hover{
   transition: filter 500ms;
+}
+
+.crono{
+  font-size: 8rem;
+  padding: 2rem;
+  margin: 0;
 }

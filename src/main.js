@@ -3,9 +3,9 @@ import javascriptLogo from "./javascript.svg";
 import viteLogo from "/vite.svg";
 import { setupCounter } from "./counter.js";
 import { format } from "date-fns";
-import githublogo from "./github-dark.svg"
+import githublogo from "./github-dark.svg";
 
-document.title = "TimeDate";
+document.title = "watchJS";
 
 const ObtenerDate = () => {
   const ahora = new Date();
@@ -41,7 +41,8 @@ document.querySelector("#app").innerHTML = `
 </a>
 </div>
 <main class="cronometro" data-aos="fade-up">
-  <p class="hora">
+  <h1>Cronometro</h1>
+  <p class="crono">
       <span id="horas"></span>:<span id="minutos"></span>:<span id="segundos"></span>
   </p>
   <button id="start">Start</button>
@@ -49,9 +50,6 @@ document.querySelector("#app").innerHTML = `
 </main>
 `;
 const horaElement = document.getElementById("horas");
-
-
-
 
 horaElement.addEventListener("mouseenter", (e) => {
   e.target.style.filter = `drop-shadow(${"#ffff"} 3px 2px 40px)`;
@@ -63,32 +61,40 @@ horaElement.addEventListener("mouseleave", (e) => {
 });
 
 /////////////////////////////////////////
-const HorasElement = document.getElementById("horas")
+const HorasElement = document.getElementById("horas");
 const MinutosElement = document.getElementById("minutos");
 const SegundosElement = document.getElementById("segundos");
 const ButtonStart = document.getElementById("start");
+const ButtonStop = document.getElementById("stop");
 
 let Segundos = 0;
 let Minutos = 0;
-let Horas = 0
+let Horas = 0;
+let pausado = false;
 
 MinutosElement.textContent = Minutos;
 SegundosElement.textContent = Segundos;
-HorasElement.textContent = Horas
-ButtonStart.addEventListener("click", () => {
-  Segundos += 1;
-  setInterval(() => {
-    SegundosElement.textContent = Segundos++;
-    if (Segundos === 59) {
-      Minutos = Minutos + 1;
-      MinutosElement.textContent = Minutos;
-      Segundos = 0;
-      if(Minutos === 1){
-        Horas += 1
-        Minutos = 0
-        HorasElement.textContent = Horas
-      }
-    }
+HorasElement.textContent = Horas;
+
+const Ejecucion = () => {
+  if (!pausado) {
+    Segundos += 1;
     
-  }, 1000);
+      SegundosElement.textContent = Segundos++;
+      if (Segundos === 59) {
+        Minutos = Minutos + 1;
+        MinutosElement.textContent = Minutos;
+        Segundos = 0;
+        if (Minutos === 59) {
+          Horas = Horas + 1;
+          HorasElement.textContent = Horas;
+          Minutos = 0;
+        }
+      }
+  }
+};
+
+ButtonStart.addEventListener("click", () => {
+  setInterval(Ejecucion,1000)
 });
+
