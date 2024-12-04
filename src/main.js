@@ -30,11 +30,7 @@ document.querySelector("#app").innerHTML = `
 <a href="https://github.com/CesarMartinez7" target="_ublank">
 <img class="git" src=${githublogo}>
 </a>
-<h1 data-aos="fade-up">DateTime</h1>
-
-
-
-
+<h1 data-aos="fade-up">watchJS</h1>
 <p id="hora" class="hora" data-color:"#0F172A">${ObtenerHora()}</p>
 <p id="fecha" class="fecha">${ObtenerDate()}</p>
 </p>
@@ -80,22 +76,20 @@ HorasElement.textContent = Horas;
 
 
 ButtonStart.addEventListener("click", () => {
-  Segundos += 1;
   setInterval(() => {
-    SegundosElement.textContent = Segundos++;
+    Segundos += 1;
+    SegundosElement.textContent = Segundos;
     if (Segundos === 59) {
       Minutos = Minutos + 1;
       MinutosElement.textContent = Minutos;
       Segundos = 0;
-      if (Minutos === 59) {
-        Horas = Horas + 1;
-        HorasElement.textContent = Horas;
-        Minutos = 0;
-      }
+      
+    }
+    if (Minutos === 59) {
+      Horas = Horas + 1;
+      HorasElement.textContent = Horas;
+      Minutos = 0;
     }
   }, 1000);
 });
 
-ButtonStop.addEventListener("click", () => {
-
-});
